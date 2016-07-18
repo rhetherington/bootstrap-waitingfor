@@ -126,7 +126,7 @@
 				$dialog.find('.modal-header').html($headerTag).show();
 
 				$contentTag.html(message);
-				$dialog.find('.progress-message').html($contentTag);
+				$dialog.find('.progress-message').html($contentTag).show();
 			}
 			else {
 				$headerTag.html(message);
@@ -159,10 +159,10 @@
 		message: function (newMessage, newTitle) {
 			if (typeof $dialog !== 'undefined') {
 				if (typeof newTitle !== 'undefined') {
-					$dialog.find('.modal-header>h'+config.headerSize).html(newTitle);										
+					$dialog.find('.modal-header>h'+config.headerSize).html(newTitle).show();										
 				}
 				if (typeof newMessage !== 'undefined') {
-					$dialog.find('.progress-message').html(newMessage);
+					$dialog.find('.progress-message').html(newMessage).show();
 				}
 			}
 		}
