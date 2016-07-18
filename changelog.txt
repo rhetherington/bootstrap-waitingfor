@@ -1,4 +1,4 @@
- 18/07/2016 : Richard Hetherington Updated version forked from https://github.com/abdennour/bootstrap-waitingfor
- Added modal-footer and moved message to footer so it can be updated more easily
- Also modified message function to accept 2 parameters to allow title and message to be updated allowing greater flexibility
- richard.hetherington@aztecretail.co.uk
+ * 18/07/2016 : Richard Hetherington Updated version forked from https://github.com/abdennour/bootstrap-waitingfor
+ * Added modal-footer with close button and moved message to new div below progress bar so it can be updated more easily
+ * Also modified message function to accept 2 parameters to allow title and message to be updated allowing greater flexibility
+ * richard.hetherington@aztecretail.co.uk
