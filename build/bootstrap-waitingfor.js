@@ -255,9 +255,10 @@
 			if(total){
 				percentOrCurrent=parseInt(percentOrCurrent/total*100);
 			}
-			$dialog.find('.progress-bar').css('width',percentOrCurrent+'%').text( percentOrCurrent + ' Complete' );
+			$dialog.find('.progress-bar').css('width',percentOrCurrent+'%').text( percentOrCurrent + ' % Complete' );
 			return $dialog;
 		}		
 	};
 
 }));
+
