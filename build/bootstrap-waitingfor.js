@@ -38,8 +38,8 @@
 					'<div class="modal-content">' +
 						'<div class="modal-header" style="display:none;"></div>' +
 						'<div class="modal-body">' +
-							'<div class="progress progress-striped active" style="margin-bottom:0;">' +
-								'<div class="progress-bar" style="width: 100%;"></div>' +
+							'<div class="progress progress-striped active">' +
+								'<div class="progress-bar" style="width: 0%;"></div>' +
 							'</div>' +
 							'<div class="progress-message" style="display:none;"></div>' +
 						'</div>' +
@@ -255,7 +255,7 @@
 			if(total){
 				percentOrCurrent=parseInt(percentOrCurrent/total*100);
 			}
-			$dialog.find('.progress-bar').css('width',percentOrCurrent+'%');
+			$dialog.find('.progress-bar').css('width',percentOrCurrent+'%').text( percentOrCurrent + ' Complete' );
 			return $dialog;
 		}		
 	};
