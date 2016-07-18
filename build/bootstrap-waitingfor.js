@@ -39,6 +39,7 @@
 							'</div>' +
 						'</div>' +
 					'</div>' +
+					'<div class="modal-footer" style="display: none;"></div>' +
 				'</div>' +
 			'</div>'
 		);
@@ -113,14 +114,14 @@
 
 			if (settings.headerText === false) {
 				$contentTag.html(message);
-				$dialog.find('.modal-body').prepend($contentTag);
+				$dialog.find('.modal-footer').html($contentTag).show();
 			}
 			else if (settings.headerText) {
 				$headerTag.html(settings.headerText);
 				$dialog.find('.modal-header').html($headerTag).show();
 
 				$contentTag.html(message);
-				$dialog.find('.modal-body').prepend($contentTag);
+				$dialog.find('.modal-footer').html($contentTag);
 			}
 			else {
 				$headerTag.html(message);
@@ -147,14 +148,16 @@
 		/**
 		 * Changes or displays current dialog message
 		 * @author Abdennour TOUMI <abdennour.toumi@gmail.com>
+		 * 18/07/2016 : Richard Hetherington modified to allow both message and header to be updated with title only be updated if supplied
+		 * I don't see why you would need to return the values as they can be stored before updating dialog in calling function ?? 
 		 */
-		message: function (newMessage) {
+		message: function (newMessage, newTitle) {
 			if (typeof $dialog !== 'undefined') {
-				if (typeof newMessage !== 'undefined') {
-					return $dialog.find('.modal-header>h'+config.headerSize).html(newMessage);
+				if (typeof newTitle !== 'undefined') {
+					$dialog.find('.modal-header>h'+config.headerSize).html(newTitle);										
 				}
-				else {
-					return $dialog.find('.modal-header>h'+config.headerSize).html();
+				if (typeof newMessage !== 'undefined') {
+					$dialog.find('.modal-footer').html(newMessage);
 				}
 			}
 		}
