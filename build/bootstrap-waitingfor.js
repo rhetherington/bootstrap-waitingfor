@@ -2,6 +2,10 @@
  * Module for displaying "Waiting for..." dialog using Bootstrap
  *
  * @author Eugene Maslovich <ehpc@em42.ru>
+ * 18/07/2016 : Richard Hetherington Updated version forked from https://github.com/abdennour/bootstrap-waitingfor
+ * Added modal-footer and moved message to footer so it can be updated more easily
+ * Also modified message function to accept 2 parameters to allow title and message to be updated allowing greater flexibility
+ * richard.hetherington@aztecretail.co.uk
  * 
  */
 
@@ -32,7 +36,10 @@
 			'<div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top:15%; overflow-y:visible;">' +
 				'<div class="modal-dialog modal-m">' +
 					'<div class="modal-content">' +
-						'<div class="modal-header" style="display: none;"></div>' +
+						'<div class="modal-header">' +
+							'<button type="button" class="close" data-dismiss="modal">&times;</button></div>' +
+							'<div class="modal-title" style="display: none;"></div>' +
+						'</div>' +
 						'<div class="modal-body">' +
 							'<div class="progress progress-striped active" style="margin-bottom:0;">' +
 								'<div class="progress-bar" style="width: 100%"></div>' +
@@ -118,14 +125,14 @@
 			}
 			else if (settings.headerText) {
 				$headerTag.html(settings.headerText);
-				$dialog.find('.modal-header').html($headerTag).show();
+				$dialog.find('.modal-title').html($headerTag).show();
 
 				$contentTag.html(message);
 				$dialog.find('.modal-footer').html($contentTag);
 			}
 			else {
 				$headerTag.html(message);
-				$dialog.find('.modal-header').html($headerTag).show();
+				$dialog.find('.modal-title').html($headerTag).show();
 			}
 
 			// Adding callbacks
@@ -154,7 +161,7 @@
 		message: function (newMessage, newTitle) {
 			if (typeof $dialog !== 'undefined') {
 				if (typeof newTitle !== 'undefined') {
-					$dialog.find('.modal-header>h'+config.headerSize).html(newTitle);										
+					$dialog.find('.modal-title>h'+config.headerSize).html(newTitle);										
 				}
 				if (typeof newMessage !== 'undefined') {
 					$dialog.find('.modal-footer').html(newMessage);
@@ -180,7 +187,7 @@
 			timer=timer ||config.timer;
 			timeout=timeout||config.timeout;
 			
-			messages=messages||$dialog.find('.modal-header>h'+config.headerSize).html();
+			messages=messages||$dialog.find('.modal-title>h'+config.headerSize).html();
 			cache.animate=cache.animate || [];
 			if(typeof messages ==='string'){
 			     	
@@ -208,11 +215,11 @@
 			if(typeof messages ==="function"){
 				if(timeout<timer){
 				        setTimeout(function(){
-					     messages.call($dialog,$dialog.find('.modal-header>h'+config.headerSize))
+					     messages.call($dialog,$dialog.find('.modal-title>h'+config.headerSize))
 				        },timeout)
 			        }
 				var job= setInterval(function(){
-					messages.call($dialog,$dialog.find('.modal-header>h'+config.headerSize))
+					messages.call($dialog,$dialog.find('.modal-title>h'+config.headerSize))
 				},timer);
 				cache.animate.push(job);
 				return job;
@@ -256,4 +263,3 @@
 	};
 
 }));
-
